@@ -6,11 +6,11 @@ const userRegisterCtrl = async (req, res) => {
     try {
         const userInfo = req.body;
 
-        const encryptedPassword = await bcrypt.hash(userInfo.password, 10);
+        const encryptedPassword = await bcrypt.hash(userInfo.user.password, 10);
 
         const newUser = new User({
-            name: userInfo.name,
-            email: userInfo.email,
+            name: userInfo.user.name,
+            email: userInfo.user.email,
             password: encryptedPassword
         });
 
@@ -31,11 +31,10 @@ const userRegisterCtrl = async (req, res) => {
 const userLoginCtrl = async (req, res) => {
     try {
         const userInfo = req.body;
-
-        const user = await User.findOne({ email: userInfo.email });
+        const user = await User.findOne({ email: userInfo.user.email });
 
         if (user) {
-            const authStatus = await bcrypt.compare(userInfo.password, user.password);
+            const authStatus = await bcrypt.compare(userInfo.user.password, user.password);
 
             if (authStatus) {
                 jwt.sign(
