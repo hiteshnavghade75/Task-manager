@@ -5,14 +5,13 @@ const bodyParser = require('body-parser')
 const cors = require("cors");
 const db = require('./db/config');
 
-
 const userRouter = require('./router/userRouter');
 const PORT=process.env.PORT
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : false}))
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended : false}))
 
-app.use(express.urlencoded({extended : true}))
+// app.use(express.urlencoded({extended : true}))
 app.use(express.json());
 app.use(cors())
 
