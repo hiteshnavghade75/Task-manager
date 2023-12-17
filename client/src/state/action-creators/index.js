@@ -30,3 +30,18 @@ export const loginUser = (user) => {
         }
     };
 };
+
+export const addTask = (task) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.post('http://localhost:5000/task/add-task', {task});
+            dispatch({
+                type: 'ADD_TASK',
+                payload: response.data 
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Error adding the task:', error);
+        }
+    };
+};

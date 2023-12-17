@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 const Nav = () => {
 
+    const auth = localStorage.getItem('token')
+
     return <div>
         <img
             className='logo'
@@ -12,7 +14,8 @@ const Nav = () => {
                 <ul className='nav-ul nav-right'>
                     <li><Link to='/register'> Register </Link></li>
                     <li><Link to='/login' > Login </Link></li>
-                    <li><Link to='/logout'> Logout </Link></li>
+                    <li><Link to='/add-task'>Add Task</Link></li>
+                 {auth ? <li><Link to='/logout'> Logout </Link></li> : <li></li>}
                 </ul>
     </div>
 }
