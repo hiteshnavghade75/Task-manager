@@ -48,7 +48,6 @@
 ### Getting Started
 To get a copy of the project up and running on your local machine, follow these steps:
 ### Prerequisites
-
 Make sure you have the following software installed on your machine:
 
 - [Node.js](https://nodejs.org/) - JavaScript runtime
@@ -59,6 +58,17 @@ Make sure you have the following software installed on your machine:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/hiteshnavghade75/Task-manager.git
+
+2. **Start server:**
+   cd ..
+   cd server
+   npm install
+   npm start
+
+3. **Start server:**
+   cd client
+   npm install
+   npm start
 
 
 # License
