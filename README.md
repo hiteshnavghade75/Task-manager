@@ -48,7 +48,6 @@
 ### Getting Started
 To get a copy of the project up and running on your local machine, follow these steps:
 ### Prerequisites
-
 Make sure you have the following software installed on your machine:
 
 - [Node.js](https://nodejs.org/) - JavaScript runtime
