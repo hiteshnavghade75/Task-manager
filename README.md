@@ -60,6 +60,17 @@ Make sure you have the following software installed on your machine:
    ```bash
    git clone https://github.com/hiteshnavghade75/Task-manager.git
 
+2. **Start server:**
+   cd ..
+   cd server
+   npm install
+   npm start
+
+3. **Start server:**
+   cd client
+   npm install
+   npm start
+
 
 # License
 This project is licensed under the ISC License.
