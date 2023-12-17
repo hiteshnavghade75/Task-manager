@@ -40,7 +40,7 @@ const TaskList = () => {
                     <li>{item.taskName}</li>
                     <li>
                         <button onClick={() => deleteTask(item._id)}>Delete</button>
-                        {/* <Link to={"/update/"+item._id}>Update</Link> */}
+                        <Link to={"/update-task/"+item._id}>Update</Link>
                         </li>
                 </ul>
             ) : <h1>No Tasks Found</h1>
