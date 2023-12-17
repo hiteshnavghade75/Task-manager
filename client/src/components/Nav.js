@@ -1,23 +1,39 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Logout from './Logout'
 
 const Nav = () => {
 
     const auth = localStorage.getItem('token')
 
     return <div>
-        <img
-            className='logo'
-            src='https://yt3.ggpht.com/a/AATXAJzB6J59WmH7IOi9jhVMv63uDhQOII5Vqq634DlgJA=s900-c-k-c0xffffffff-no-rj-mo'
-            alt='logo' />
-       
-                <ul className='nav-ul nav-right'>
-                    <li><Link to='/register'> Register </Link></li>
-                    <li><Link to='/login' > Login </Link></li>
-                    <li><Link to='/add-task'>Add Task</Link></li>
-                    <li><Link to='/update-task/:id'>Update Task</Link></li>
-                 {auth ? <li><Link to='/logout'> Logout </Link></li> : <li></li>}
-                </ul>
+        <nav className="navbar navbar-expand-lg bg-info-subtle">
+            <div className="container-fluid">
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="/add-task">Add Task</a>
+                        </li>
+                    </ul>
+                    <div>
+                        {auth ?
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0"><li className="nav-item">
+                                <Logout />
+                            </li></ul>
+                            :
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/register">Register</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/login">Login</a>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
     </div>
 }
 

@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 const userRegisterCtrl = async (req, res) => {
     try {
         const userInfo = req.body;
-
         const encryptedPassword = await bcrypt.hash(userInfo.user.password, 10);
 
         const newUser = new User({
@@ -15,7 +14,6 @@ const userRegisterCtrl = async (req, res) => {
         });
 
         const savedUser = await newUser.save();
-
         res.status(201).json({
             message: "Encryption and User Creation Successful",
             data: savedUser

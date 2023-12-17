@@ -11,7 +11,6 @@ const UserRegister = () => {
     const handleRegister = async () => {
         try {
             const response = await dispatch(actionCreators.registerUser(formData));
-            // console.log("Response Data:", response.data);
             const user = response.data;
             localStorage.setItem('user', JSON.stringify(user))
             alert("Registered Successfully");
@@ -20,7 +19,6 @@ const UserRegister = () => {
             console.error("Error during registration:", error);
         }
     };
-
 
     const handleChange = (e) => {
         setFormData((prevFormData) => ({
@@ -32,7 +30,7 @@ const UserRegister = () => {
 
     return (
         <div className="register-box">
-            <h1> Register </h1>
+            <h2 className="register-heading"> Register User </h2>
             <input
                 className="input-box"
                 type="text"

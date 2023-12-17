@@ -33,7 +33,7 @@ const UpdateTask = () => {
     }
     
     return<div className='product'>
-        <h1>Update Task</h1>
+       <h2 className="register-heading"> Update Task </h2>
         <input type='text' placeholder='Enter product name' className='input-box'
         value={taskName} onChange={(e) => {setTaskName(e.target.value)}}
         />

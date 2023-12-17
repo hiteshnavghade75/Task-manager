@@ -2,7 +2,6 @@ const Task = require('../model/Task');
 
 const addTaskCtrl = async (req, res) => {
     try {
-        console.log(req.body)
         const task = new Task(req.body.task);
         const result = await task.save();
         res.status(201).json(result);
@@ -49,14 +48,25 @@ const deleteTaskCtrl = async (req, res) => {
     }
   };
 
-const updateTaskCtrl = async (req,res) => {
-    let result = await Task.updateOne(
-        {_id : req.params.id},
+  const updateTaskCtrl = async (req, res) => {
+    try {
+      const result = await Task.updateOne(
+        { _id: req.params.id },
         {
-            $set : req.body
+          $set: req.body,
         }
-    )
-    res.send(result)
-}
+      );
+  
+      if (result.nModified > 0) {
+        res.status(200).json({ message: 'Task updated successfully' });
+      } else {
+        res.status(404).json({ message: 'No Record Found' });
+      }
+    } catch (error) {
+      console.error('Error updating task:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  };
+  
 
 module.exports = { addTaskCtrl, getTasksCtrl, deleteTaskCtrl, updateTaskCtrl, getTaskByIdCtrl };
