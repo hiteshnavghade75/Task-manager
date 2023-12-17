@@ -1,6 +1,7 @@
 const User = require('../model/Users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+SECRET_KEY="INFINITY"
 
 const userRegisterCtrl = async (req, res) => {
     try {

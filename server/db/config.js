@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 require("dotenv").config();
-let BASE_URL = process.env.DB_URL;
+let BASE_URL = "mongodb+srv://hiteshnavghade75:Hitesh2862@cluster0.eykssla.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(BASE_URL)
     .then(() => {
