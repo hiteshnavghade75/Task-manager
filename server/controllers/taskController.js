@@ -12,5 +12,19 @@ const addTaskCtrl = async (req, res) => {
     }
 };
 
+const getTasksCtrl = async (req, res) => {
+    try {
+      const tasks = await Task.find();
+      res.status(200).json(tasks);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
 
-module.exports = { addTaskCtrl };
+const deleteTaskCtrl = async (req, res) => {
+    const result = await Task.deleteOne({_id : req.params.id})
+    res.send(result)
+}
+
+module.exports = { addTaskCtrl, getTasksCtrl, deleteTaskCtrl };
