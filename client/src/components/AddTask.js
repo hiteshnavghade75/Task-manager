@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { actionCreators } from '../state/index';
+import {jwtDecode} from 'jwt-decode';
 
 const AddTask = () => {
 
@@ -11,7 +12,8 @@ const AddTask = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const userId =  JSON.parse(localStorage.getItem('user'))._id;
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
 
     const addTask = async () => {
 
@@ -23,7 +25,7 @@ const AddTask = () => {
         try {
             await dispatch(actionCreators.addTask({
                 ...formData,
-                userId : userId
+                userId : decodedToken.id
             }));
             navigate('/');
         } catch (error) {

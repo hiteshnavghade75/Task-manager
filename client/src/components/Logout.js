@@ -6,7 +6,6 @@ const Logout = () => {
     const navigate = useNavigate();
 
     const logout = () => {
-        localStorage.removeItem('user')
         localStorage.removeItem('token')
         navigate('/')
         window.location.reload();
