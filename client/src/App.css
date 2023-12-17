@@ -1,3 +1,4 @@
+
 .nav-ul li{
   display: inline-block;
   padding: 10px;
@@ -50,6 +51,7 @@
   width: 150px;
   cursor: pointer;
   border: none;
+  border-radius: 10px;
   background-color: skyblue;
 }
 
@@ -73,21 +75,24 @@
   margin-top: 50px;
 }
 
-.product-list ul li {
-  display: inline-block;
-  border: 1px solid skyblue;
-  padding: 5px;
-  width: 150px;
+.edit-delete{
+  position: relative;
+  float: right;
 }
 
-.product-list ul {
-  margin: 0;
+.task-list{
+   text-align: center;
+   color: rgb(69, 65, 65);
+   padding: 10px;
 }
 
-.search-product-box{
-  width: 400px;
-  margin: 20px;
-  height: 40px;
-  border: 1px solid skyblue;
-  padding-left: 20px;
+.register-heading{
+  position: relative;
+  top: 20px;
+  padding: 20px;
+  color: rgb(69, 65, 65);
+}
+
+.logout{
+  cursor: pointer;
 }

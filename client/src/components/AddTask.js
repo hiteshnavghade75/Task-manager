@@ -21,11 +21,10 @@ const AddTask = () => {
         }
     
         try {
-            const response = await dispatch(actionCreators.addTask({
+            await dispatch(actionCreators.addTask({
                 ...formData,
                 userId : userId
             }));
-            const task = response.data;
             navigate('/');
         } catch (error) {
             console.error("Error adding task:", error);
@@ -40,13 +39,13 @@ const AddTask = () => {
     };
     
     return<div className='product'>
-        <h1>Add Task</h1>
+        <h2 className="register-heading"> Add Task </h2>
         <input type='text' placeholder='Enter product name' className='input-box' name='taskName'
         value={formData.taskName} onChange={(e) => handleChange(e)}
         />
         {error && !formData.taskName && <span className='invalid-input'>Enter task name</span>}
 
-        <button onClick={addTask} className='signup-button'>Add Product</button>
+        <button onClick={addTask} className='signup-button'>Add Task</button>
     </div>
 }
 
