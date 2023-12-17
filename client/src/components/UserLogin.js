@@ -12,7 +12,6 @@ const UserLogin = () => {
 
     const handleLogin = async () => {
         try {
-            // Dispatch the action and get the response data
             const response = await dispatch(actionCreators.loginUser(formData));
             const user = response.data
             console.log(user)

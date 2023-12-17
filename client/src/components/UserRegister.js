@@ -10,13 +10,17 @@ const UserRegister = () => {
 
     const handleRegister = async () => {
         try {
-            dispatch(actionCreators.registerUser(formData));
-            alert("Ragistered Successfully")
-            navigate('/login')
+            const response = await dispatch(actionCreators.registerUser(formData));
+            // console.log("Response Data:", response.data);
+            const user = response.data;
+            localStorage.setItem('user', JSON.stringify(user))
+            alert("Registered Successfully");
+            navigate('/login');
         } catch (error) {
             console.error("Error during registration:", error);
         }
     };
+
 
     const handleChange = (e) => {
         setFormData((prevFormData) => ({
@@ -35,7 +39,7 @@ const UserRegister = () => {
                 placeholder="Name"
                 onChange={(e) => handleChange(e)}
                 value={formData.name}
-                name="name"
+                name="name" 
             />
 
             <input
@@ -44,7 +48,7 @@ const UserRegister = () => {
                 placeholder="Email"
                 onChange={(e) => handleChange(e)}
                 value={formData.email}
-                name="email"
+                name="email" 
             />
 
             <input
