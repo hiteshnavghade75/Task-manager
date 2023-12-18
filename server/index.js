@@ -7,7 +7,8 @@ const db = require('./db/config');
 
 const userRouter = require('./router/userRouter');
 const taskRouter = require('./router/taskRouter');
-const PORT=process.env.PORT
+
+PORT=5000
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended : false}))

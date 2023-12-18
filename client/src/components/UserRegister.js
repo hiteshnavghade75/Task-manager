@@ -12,7 +12,6 @@ const UserRegister = () => {
         try {
             const response = await dispatch(actionCreators.registerUser(formData));
             const user = response.data;
-            localStorage.setItem('user', JSON.stringify(user))
             alert("Registered Successfully");
             navigate('/login');
         } catch (error) {
