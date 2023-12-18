@@ -11,11 +11,7 @@ const TaskList = () => {
     const auth = localStorage.getItem('token')
 
     const getTasks = async () => {
-        let result = await fetch("http://localhost:5000/task/get-tasks", {
-            headers: {
-                authorization: localStorage.getItem('token')
-            }
-        });
+        let result = await fetch("http://localhost:5000/task/get-tasks");
         result = await result.json();
         setTasks(result)
     }
