@@ -41,7 +41,7 @@ const userLoginCtrl = async (req, res) => {
                         email: user.email,
                         id: user._id
                     },
-                    process.env.SECRET_KEY,
+                    SECRET_KEY,
                     {
                         expiresIn: "1h"
                     },
