@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { actionCreators } from '../state/index';
+import toast from "react-hot-toast";
+
 
 const UserRegister = () => {
     const dispatch = useDispatch();
@@ -10,14 +12,18 @@ const UserRegister = () => {
 
     const handleRegister = async () => {
         try {
+            if(!formData.name || !formData.email || !formData.password){
+                toast.error("Please fill credentials")
+            }
             const response = await dispatch(actionCreators.registerUser(formData));
             const user = response.data;
-            alert("Registered Successfully");
+            toast.success("Registered Successfully")
             navigate('/login');
         } catch (error) {
             console.error("Error during registration:", error);
         }
     };
+
 
     const handleChange = (e) => {
         setFormData((prevFormData) => ({
@@ -36,7 +42,7 @@ const UserRegister = () => {
                 placeholder="Name"
                 onChange={(e) => handleChange(e)}
                 value={formData.name}
-                name="name" 
+                name="name"
             />
 
             <input

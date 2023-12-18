@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { actionCreators } from '../state/index';
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const UserLogin = () => {
 
@@ -16,9 +17,9 @@ const UserLogin = () => {
             const user = response.data
             console.log(user)
             localStorage.setItem('token', user)
-            alert("User Logged In Successfully");
             navigate('/');
             window.location.reload();
+            toast.success("User Logged In Successfully");
         } catch (error) {
             console.error("Error during login:", error);
         }
