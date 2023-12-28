@@ -4,38 +4,69 @@ import { useNavigate } from 'react-router-dom';
 import { actionCreators } from '../state/index';
 import toast from "react-hot-toast";
 
-
 const UserRegister = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+    const [errors, setErrors] = useState({});
 
-    const handleRegister = async () => {
+    const handleRegister = async (e) => {
+        e.preventDefault();
         try {
-            if(!formData.name || !formData.email || !formData.password){
-                toast.error("Please fill credentials")
+            const validationErrors = validateFormData();
+            if (Object.keys(validationErrors).length > 0) {
+                setErrors(validationErrors);
+                return;
             }
-            const response = await dispatch(actionCreators.registerUser(formData));
-            const user = response.data;
-            toast.success("Registered Successfully")
+
+            await dispatch(actionCreators.registerUser(formData));
+            toast.success("Registered Successfully");
             navigate('/login');
         } catch (error) {
             console.error("Error during registration:", error);
         }
     };
 
-
     const handleChange = (e) => {
         setFormData((prevFormData) => ({
             ...prevFormData,
             [e.target.name]: e.target.value,
         }));
-        console.log(formData)
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [e.target.name]: null,
+        }));
+        console.log(formData);
+    };
+
+    const validateFormData = () => {
+        const errors = {};
+
+        if (!formData.name.trim()) {
+            errors.name = "Name is required";
+        }
+
+        if (!formData.email.trim()) {
+            errors.email = "Email is required";
+        } else if (!isValidEmail(formData.email)) {
+            errors.email = "Please enter a valid email address";
+        }
+
+        if (!formData.password.trim()) {
+            errors.password = "Password is required";
+        }
+
+        return errors;
+    };
+
+    const isValidEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     };
 
     return (
-        <div className="register-box">
-            <h2 className="register-heading"> Register User </h2>
+        <form className="register-box" onSubmit={handleRegister}>
+            <h2 className="register-heading">Register User</h2>
             <input
                 className="input-box"
                 type="text"
@@ -44,6 +75,7 @@ const UserRegister = () => {
                 value={formData.name}
                 name="name"
             />
+            {errors.name && <p className="error-message">{errors.name}</p>}
 
             <input
                 className="input-box"
@@ -51,8 +83,9 @@ const UserRegister = () => {
                 placeholder="Email"
                 onChange={(e) => handleChange(e)}
                 value={formData.email}
-                name="email" 
+                name="email"
             />
+            {errors.email && <p className="error-message">{errors.email}</p>}
 
             <input
                 className="input-box"
@@ -62,12 +95,14 @@ const UserRegister = () => {
                 value={formData.password}
                 name="password"
             />
+            {errors.password && <p className="error-message">{errors.password}</p>}
 
-            <button type="button" className="signup-button" onClick={handleRegister}>
+            <button type="submit" className="signup-button">
                 Sign Up
             </button>
-        </div>
+        </form>
     );
 };
 
 export default UserRegister;
+

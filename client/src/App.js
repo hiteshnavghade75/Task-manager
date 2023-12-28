@@ -1,6 +1,6 @@
 import './App.css';
 import AppRouter from './containers/AppRouter';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
