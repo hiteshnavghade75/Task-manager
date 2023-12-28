@@ -41,7 +41,7 @@
   display: block;
   width: 300px;
   padding: 7px;
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
   border: 1px solid skyblue;
 }
 
@@ -95,4 +95,11 @@
 
 .logout{
   cursor: pointer;
+}
+
+.error-message{
+  display: block;
+  margin-left: 20px;
+  margin-top: 0px;
+  color: red;
 }
